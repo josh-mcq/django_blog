@@ -1,2 +1,3 @@
 *.pyc
 staticfiles
+blog/static/bower_components/
