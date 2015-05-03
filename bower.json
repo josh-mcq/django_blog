@@ -1,0 +1,24 @@
+{
+  "name": "blog",
+  "version": "0.0.0",
+  "authors": [
+    "josh <joshua.g.mcquiston@gmail.com>"
+  ],
+  "description": "A Django-powered blogging engine",
+  "main": "manage.py",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "none"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "html5-boilerplate": "~5.2.0"
+  }
+}
