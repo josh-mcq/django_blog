@@ -1,7 +1,10 @@
 from django.shortcuts import render
+
+
 from django.shortcuts import render_to_response, get_object_or_404
 
-from blog.models import Blog, Category
+from blog.models import Post, Category
+
 
 
 def index(request):
@@ -21,3 +24,4 @@ def view_category(request, slug):
 	    'category': category,
 	    'posts': Blog.objects.filter(category=category)[:5]
 	})
+
