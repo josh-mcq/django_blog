@@ -13,21 +13,69 @@
         <!-- Place favicon.ico in the root directory -->
 
        {% load staticfiles %}
-        <link rel="stylesheet" href="{% static 'bower_components/html5-boilerplate/dist/css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'joshmcquiston/css/foundation.css' %}"/>
+        <link rel="stylesheet" href="{% static 'joshmcquiston/css/custom.css' %}" />
+        <!--<link rel="stylesheet" href="{% static 'bower_components/html5-boilerplate/dist/css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'bower_components/html5-boilerplate/dist/css/main.css' %}">
         <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
         <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css' %}">
-        <script src="{% static 'bower_components/html5-boilerplate/dist/js/vendor/modernizr-2..8.3.min.js' %}"></script>
+        <script src="{% static 'bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js' %}"></script>-->
     </head>
     <body>
-        <!--[if lt IE 8]>
+      <div class="row">
+         <div class="large-12 columns">
+ 
+      <!-- Navigation -->
+ 
+        <ul class="button-group">
+          <li><a href="#" class="button active">Home</a></li>
+          <li><a href="about.html" class="button">About</a></li>
+          <li><a href="contact.html" class="button">Contact</a></li>
+        </ul>
+ 
+      <!-- End Navigation --></div>
+        <div class="panel">
+                  <h5>Josh McQuiston</h5>
+                  <!--<h6 class="subheader">Available for full time employment with innovative tech company in Portland area.</h6>-->
+                  <h6 class="subheader">Developer, Meetup Organizer, Problem Solver, Raspberry Pi hacker, Speaker, Writer</h6>
+                  <h6>Technical Expertise:</h6>
+                  <ul>
+                    <li>Python</li>
+                                    <li>Django</li>
+                                    <li>PHP</li>
+                    <li>SQL</li>
+                    <li>JQuery</li>
+                    <li>JavaScript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                  </ul>
+                </div><!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade you
             r browser</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- Add your site or application content here -->
         {% block content %}{% endblock %}
-
+               <footer class="row">
+        <div class="large-12 columns"><hr />
+            <div class="row">
+ 
+              <div class="large-6 columns">
+                  <p>© Copyright Josh McQuiston.</p>
+              </div>
+ 
+              <div class="large-6 columns">
+                  <ul class="inline-list right">
+                    <li><a href="http://www.linkedin.com/pub/joshua-mcquiston/4/81/8b1">LinkedIn</a></li>
+                    <li><a href="https://plus.google.com/u/0/+JoshuaMcquiston/about">Google+</a></li>
+                    <li><a href="https://github.com/josh-mcq">Github</a></li>
+                    <li><a href="https://twitter.com/pdxwebdeveloper">Twitter</a></li>
+                  </ul>
+              </div>
+ 
+            </div>
+        </div>
+      </footer>
         <p>Hello world! This is HTML5 Boilerplate.</p>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{% static 'bower_components/html5-boilerplate/js/vendor/jquery-1.11.3.min.js' %}"><\/script>')</script>

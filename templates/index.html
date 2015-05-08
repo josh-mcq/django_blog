@@ -1,19 +1,30 @@
 
-{% extends "blog/includes/base.html" %}
+{% extends 'blog/includes/base.html' %}
+{% block title %}Welcome to my blog{% endblock %}
 
-    {% block content %}
-        {% for blog in posts %}
-        <h1>{{ blog.title }}</h1>
-        <h3>{{ blog.posted }}</h3>
-        <p>{{ blog.text }}</p>
+{% block content %}
+    <h2>Categories</h2>
+    {% if categories %}
+        <ul>
+        {% for category in categories %}
+            <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
         {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
 
+    <h2>Posts</h2>
+    {% if posts %}
+        <ul>
+        {% for post in posts %}
+            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no posts.</p>
+    {% endif %}
 
-
-       <ul class="button-group">
-          <li><a href="#" class="button active">Home</a></li>
-      </ul>
-    {% endblock %}
-
+{% endblock %}
 
 
