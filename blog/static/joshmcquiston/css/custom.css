@@ -5,8 +5,10 @@ min-height:170px;
 min-width: 220px;
 
 margin-bottom: 1.25rem;
+}
 
-
+div.blog {
+min-height:350px;
 }
 
 #underpic {
