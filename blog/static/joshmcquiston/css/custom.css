@@ -1,0 +1,31 @@
+img.selfie {
+max-height: 170px;
+max-width: 220px;
+min-height:170px;
+min-width: 220px;
+
+margin-bottom: 1.25rem;
+
+
+}
+
+#underpic {
+float: left;
+}
+div.panel img {
+width:160px;
+height:px;
+}
+.subheader {
+font-size: 14px;
+font-family: 'Open Sans', sans-serif;
+}
+
+.button-group li .active {
+color: #ce9821;
+border-bottom: 1px solid #ce9821;
+background-color:#ffffff;
+}
+h2 {
+color: #e2b548;
+}
