@@ -6,21 +6,24 @@ from blog.models import Post, Category
 
 
 def index(request):
-	#import pdb;pdb.set_trace()
 	return render_to_response('index.html', {
 		'categories': Category.objects.all(),
 		'posts': Post.objects.all()[:5]
-	 })
+	})
 
-def view_post(request, slug):   
-	return render_to_response('view_post.html', {
+def joshmcquiston(request):
+	return render_to_response('joshmcquiston.html',
+	)
+
+def view_post(request, slug): 
+    return render_to_response('view_post.html', {
 		'post': get_object_or_404(Post, slug=slug)
 	})
 
 def view_category(request, slug):
 	category = get_object_or_404(Category, slug=slug)
 	return render_to_response('view_category.html', {
-	    'category': category,
 	    'posts': Post.objects.filter(category=category)[:5]
 	})
+
 
