@@ -11,6 +11,10 @@ div.blog {
 min-height:350px;
 }
 
+ul.blog li a {
+color:#333333;
+}
+
 #underpic {
 float: left;
 }
