@@ -1,0 +1,8 @@
+{% extends 'blog/includes/base.html' %} 
+{% block head_title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    {{ post.title }}
+    {{ post.text }}
+{% endblock %}
