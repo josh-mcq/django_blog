@@ -3,7 +3,7 @@
 {% block title %}{{ category.title }}{% endblock %}
 
 {% block content %}
-    <h3>{{ category.title }}</h3>
+    <h3>Category: {{ category.title }}</h3>
     {% if posts %}
         <ul>
         {% for post in posts %}
