@@ -3,6 +3,7 @@
 {% block title %}{{ category.title }}{% endblock %}
 
 {% block content %}
+    <h3>{{ category.title }}</h3>
     {% if posts %}
         <ul>
         {% for post in posts %}
@@ -12,4 +13,5 @@
     {% else %}
         <p>There are no posts.</p>
     {% endif %}
+    <a href="https://fathomless-castle-1283.herokuapp.com/">Back to blog home{{ post.category.title }}</a>
 {% endblock %}

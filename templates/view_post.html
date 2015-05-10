@@ -5,4 +5,6 @@
 {% block content %}
     <h3>{{ post.title }}</h3>
     <p>{{ post.text }}</p>
+    <a href="{{ post.category.get_absolute_url }}">Back to {{ post.category.title }}</a>
+
 {% endblock %}

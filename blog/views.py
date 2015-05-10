@@ -23,6 +23,7 @@ def view_post(request, slug):
 def view_category(request, slug):
 	category = get_object_or_404(Category, slug=slug)
 	return render_to_response('view_category.html', {
+		'category' : category,
 	    'posts': Post.objects.filter(category=category)[:5]
 	})
 
