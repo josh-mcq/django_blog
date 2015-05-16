@@ -15,6 +15,8 @@ class Post(models.Model):
 	def get_absolute_url(self):
 		return ('view_blog_post', None, { 'slug': self.slug })
 
+	class Meta:
+		ordering = ["-pub_date"]
 
 class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
