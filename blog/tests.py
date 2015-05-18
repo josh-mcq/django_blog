@@ -1,4 +1,5 @@
-from django.test import TestCase, LiveServerTestCase, Client
+from django.test import LiveServerTestCase, Client
+from unittest import TestCase
 from django.utils import timezone
 from blog.models import Post, Category
 
@@ -28,7 +29,7 @@ class PostTest(TestCase):
         # Check attributes
         self.assertEquals(only_post.title, 'My first post')
         self.assertEquals(only_post.text, 'This is my first blog post')
-        #self.assertEquals(only_post.pub_date.day, post.pub_date.day)
+        self.assertEquals(only_post.pub_date.day, post.pub_date.day)
         #self.assertEquals(only_post.pub_date.month, post.pub_date.month)
         #self.assertEquals(only_post.pub_date.year, post.pub_date.year)
         #self.assertEquals(only_post.pub_date.hour, post.pub_date.hour)
@@ -39,13 +40,21 @@ class BaseAcceptanceTest(LiveServerTestCase):
     def setUp(self):
         self.client = Client()
 
+        # Create the new post
+        self.client.post('/admin/blog/category/add/', {
+            'title': 'Test Category',
+            'slug':'test-category',
+        },
+        follow=True
+        )
+
 
 class AdminTest(BaseAcceptanceTest):
     fixtures = ['users.json']
 
     def test_login(self):
         # Get login page
-        response = self.client.get('/adminlogin/?next=/admin')
+        response = self.client.get('/admin/', follow=True)
 
         # Check response code
         self.assertEquals(response.status_code, 200)
@@ -57,7 +66,7 @@ class AdminTest(BaseAcceptanceTest):
         self.client.login(username='bobsmith', password="password")
 
         # Check response code
-        response = self.client.get('/adminlogin/?next=/admin')
+        response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
 
         # Check 'Log out' in response
@@ -68,7 +77,7 @@ class AdminTest(BaseAcceptanceTest):
         self.client.login(username='bobsmith', password="password")
 
         # Check response code
-        response = self.client.get('/adminlogin/?next=/admin')
+        response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
 
         # Check 'Log out' in response
@@ -78,8 +87,66 @@ class AdminTest(BaseAcceptanceTest):
         self.client.logout()
 
         # Check response code
-        response = self.client.get('/admin/')
+        response = self.client.get('/admin/', follow=True)
         self.assertEquals(response.status_code, 200)
 
         # Check 'Log in' in response
         self.assertTrue('Log in' in response.content)
+
+    def test_create_post(self):
+        # Log in
+        self.client.login(username='bobsmith', password="password")
+
+        # Check response code
+        response = self.client.get('/admin/blog/post/add/')
+        self.assertEquals(response.status_code, 200)
+
+        # Create a category
+        self.client.post('/admin/blog/category/add/', {
+            'title': 'Me Category',
+            'slug':'me-category',
+        },
+        follow=True)
+
+        response = self.client.post('/admin/blog/post/add/', {
+            'title': 'My first post',
+            'text': 'This is my first post',
+            'pub_date': timezone.now(),
+            'slug': 'my-first-post',
+            'category': 2,
+        },
+        follow=True
+        )
+        self.assertEquals(response.status_code, 200)
+
+        # Check added successfully
+        self.assertTrue('added successfully' in response.content)
+
+        # Check new post now in database
+        all_posts = Post.objects.all()
+        self.assertEquals(len(all_posts), 1)
+
+
+    def test_create_category(self):
+        # Log in
+        self.client.login(username='bobsmith', password="password")
+
+        # Check response code
+        response = self.client.get('/admin/blog/category/add/')
+        self.assertEquals(response.status_code, 200)
+
+        # Create the new post
+        response = self.client.post('/admin/blog/category/add/', {
+            'title': 'My Category',
+            'slug':'my-category',
+        },
+        follow=True
+        )
+        self.assertEquals(response.status_code, 200)
+
+        # Check added successfully
+        self.assertTrue('added successfully' in response.content)
+
+        # Check new post now in database
+        all_posts = Category.objects.all()
+        self.assertEquals(len(all_posts), 1)
