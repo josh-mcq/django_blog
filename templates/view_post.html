@@ -2,10 +2,12 @@
 {% block head_title %}{{ post.title }}{% endblock %}
 {% block title %}{{ post.title }}{% endblock %}
 
+{% load custom_markdown %}
+
 {% block content %}
     <h3>{{ post.title }}</h3>
     <p class = "subheader">{{ post.pub_date }}<p>
-    <p>{{ post.text }}</p>
+    <p>{{ post.text|custom_markdown }}</p>
     <a href="{{ post.category.get_absolute_url }}">Back to {{ post.category.title }}</a>
 
 {% endblock %}
