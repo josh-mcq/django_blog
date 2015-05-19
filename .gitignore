@@ -1,4 +1,4 @@
 heroku/
 *.pyc
-db.sqlite3
+#db.sqlite3
 blog/static/bower_components/
