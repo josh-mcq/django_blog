@@ -2,4 +2,4 @@ heroku/
 *.pyc
 db.sqlite3
 blog/static/bower_components/
-djangoblog/settings.py
+#djangoblog/settings.py
