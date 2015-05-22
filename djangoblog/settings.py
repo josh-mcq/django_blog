@@ -61,14 +61,14 @@ WSGI_APPLICATION = 'djangoblog.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-'''
+
 
 
 # Internationalization
@@ -93,7 +93,7 @@ STATIC_URL = '/static/'
 # Template directory
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
-
+'''
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 #['default'] =  dj_database_url.config()
@@ -114,3 +114,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+'''
